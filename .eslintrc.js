@@ -12,7 +12,12 @@ module.exports = {
     quotes: [2, 'single', { avoidEscape: true }],
     'no-mixed-spaces-and-tabs': 0,
     'no-sequences': [0, 'SequenceExpression'],
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     'no-duplicate-imports': [
       'error',
       {
