@@ -1,6 +1,10 @@
-import { RequestsApi } from './api/requests';
+import { calculateUserCommission } from './modules/calculateUserCommission';
+import { ModelAction } from './states/models/modelAction';
+import { jsonParseUtil } from './utils/jsonParseUtil';
 
 (async function app() {
-  const response = await RequestsApi.getCashIn();
-  console.log(response);
+  await ModelAction();
+  //Add module structure
+  const inputData = await jsonParseUtil(process.argv[2]);
+  calculateUserCommission(inputData);
 })();
