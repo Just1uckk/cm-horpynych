@@ -8,4 +8,4 @@ class Output {
   }
 }
 
-export const outputService = new Output();
+export const OutputService = new Output();

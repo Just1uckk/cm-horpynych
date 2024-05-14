@@ -7,16 +7,11 @@ export class BaseHttpServices {
 
   onResponse(response, showErrorMessage = true) {
     if (response.status !== 200) {
-      const error = new ResponseError(
-        response,
-        this.getErrorMessage('Api error'),
-      );
-
       if (showErrorMessage) {
-        console.log(error.message);
+        console.log(`Api return error status code ${response.status}. `);
       }
 
-      throw error;
+      return response;
     }
   }
 

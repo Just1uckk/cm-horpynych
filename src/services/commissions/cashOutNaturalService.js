@@ -16,7 +16,7 @@ export class CashOutNaturalService {
     const operationAmount = this.transfer.operation.amount;
     const limit = new UserService(
       user,
-      this.transfer,
+      this.transfer.date,
       this.config.week_limit.amount,
     ).currentLimit();
     const cash = operationAmount - limit;

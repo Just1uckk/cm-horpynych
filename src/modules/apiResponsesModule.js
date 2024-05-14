@@ -1,8 +1,8 @@
-import { RequestsApi } from '../../api/requests';
-import { SITUATION_MODEL } from '../../constants/constants';
-import { ModelState } from './modelState';
+import { RequestsApi } from '../api/requests';
+import { SITUATION_MODEL } from '../constants/constants';
+import { ModelState } from '../states/models/modelState';
 
-export const ModelAction = async () => {
+export async function apiResponseModule() {
   try {
     const modelsName = {
       0: SITUATION_MODEL.cashInNatural,
@@ -20,4 +20,4 @@ export const ModelAction = async () => {
   } catch (e) {
     console.log('Something went wrong with getting models (ModelAction).');
   }
-};
+}

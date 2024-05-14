@@ -1,10 +1,7 @@
-import { calculateUserCommission } from './modules/calculateUserCommission';
-import { ModelAction } from './states/models/modelAction';
-import { jsonParseUtil } from './utils/jsonParseUtil';
+import { apiResponseModule } from './modules/apiResponsesModule';
+import { calculateUserCommissionModule } from './modules/calculateUserCommissionModule';
 
 (async function app() {
-  await ModelAction();
-  //Add module structure
-  const inputData = await jsonParseUtil(process.argv[2]);
-  calculateUserCommission(inputData);
+  await apiResponseModule();
+  await calculateUserCommissionModule();
 })();
