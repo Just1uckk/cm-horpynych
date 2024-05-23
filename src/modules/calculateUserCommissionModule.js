@@ -1,9 +1,9 @@
 import { CommissionManager } from '../services/commissions/commissionManager';
 import { OutputService } from '../services/outputService';
-import { jsonParseUtil } from '../utils/jsonParseUtil';
+import { parseJsonFile } from '../utils/parseJsonFile';
 
 export async function calculateUserCommissionModule() {
-  const inputData = await jsonParseUtil(process.argv[2]);
+  const inputData = await parseJsonFile(process.argv[2]);
   if (inputData) {
     const commissionList = inputData.map((transferInformation) =>
       new CommissionManager(transferInformation).calculate(),

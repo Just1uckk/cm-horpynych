@@ -2,7 +2,7 @@ import { RequestsApi } from '../api/requests';
 import { SITUATION_MODEL } from '../constants/constants';
 import { ModelState } from '../states/models/modelState';
 
-export async function apiResponseModule() {
+export async function getComissionFeesModule() {
   try {
     const modelsName = {
       0: SITUATION_MODEL.cashInNatural,

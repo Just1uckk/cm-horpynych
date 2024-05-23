@@ -1,14 +1,14 @@
 import fs from 'fs';
-import { jsonParseUtil } from '../../src/utils/jsonParseUtil';
+import { parseJsonFile } from '../../src/utils/parseJsonFile';
 import { describe, expect, test } from '@jest/globals';
 
 describe('ReadJsonFile.', () => {
   test('Throws an exception if file is not provided.', async () => {
-    await expect(jsonParseUtil()).rejects.toThrow('File path not found.');
+    await expect(parseJsonFile()).rejects.toThrow('File path not found.');
   });
 
   test('Throws an exception if file does not exist.', async () => {
-    await expect(jsonParseUtil('invalid-file.json')).rejects.toThrow(
+    await expect(parseJsonFile('invalid-file.json')).rejects.toThrow(
       "File 'invalid-file.json' does not exist!",
     );
   });
@@ -19,7 +19,7 @@ describe('ReadJsonFile.', () => {
 
     fs.writeFileSync(filePath, fileContent);
 
-    await expect(jsonParseUtil(filePath)).rejects.toThrow(
+    await expect(parseJsonFile(filePath)).rejects.toThrow(
       'Unexpected end of JSON input',
     );
 
@@ -33,7 +33,7 @@ describe('ReadJsonFile.', () => {
     fs.writeFileSync(filePath, fileContent);
 
     const expected = { name: 'John Doe', age: 30 };
-    const actual = await jsonParseUtil(filePath);
+    const actual = await parseJsonFile(filePath);
 
     expect(actual).toEqual(expected);
 
