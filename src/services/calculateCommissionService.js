@@ -1,4 +1,4 @@
-class CalculateCommission {
+class _CalculateCommissionService {
   getCommission(cash, commissionPercentage) {
     const commissionFee = (cash / 100) * commissionPercentage;
     const centsPerEuro = 100;
@@ -6,4 +6,4 @@ class CalculateCommission {
   }
 }
 
-export const CalculateCommissionService = new CalculateCommission();
+export const CalculateCommissionService = new _CalculateCommissionService();

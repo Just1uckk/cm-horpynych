@@ -1,6 +1,6 @@
 import { getISOWeek } from 'date-fns';
 
-class DateValidation {
+class _DateService {
   getIsThisWeek(previousDate, currentDate) {
     const previous = new Date(previousDate);
     const current = new Date(currentDate);
@@ -8,4 +8,4 @@ class DateValidation {
   }
 }
 
-export const DateService = new DateValidation();
+export const DateService = new _DateService();

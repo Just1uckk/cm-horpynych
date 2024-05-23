@@ -1,13 +1,13 @@
 import { DateService } from './dateService';
 
-export class UserService {
+export class UserWeeklyLimitService  {
   constructor(user, currentDate, weekLimit) {
     this.user = user;
     this.weekLimit = weekLimit;
     this.currentDate = currentDate;
   }
 
-  getIsInOneWeek(currentDate) {
+  getCurrentLimit(currentDate) {
     if (!currentDate) return false;
     return DateService.getIsThisWeek(
       this.user?.transaction[this.user?.transaction.length - 1],
@@ -17,7 +17,7 @@ export class UserService {
 
   currentLimit() {
     if (!this.user) return this.weekLimit;
-    if (this.getIsInOneWeek(this.currentDate)) {
+    if (this.getCurrentLimit(this.currentDate)) {
       return this.user.freeCharge;
     } else {
       return this.weekLimit;

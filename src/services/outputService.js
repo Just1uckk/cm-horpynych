@@ -1,4 +1,4 @@
-class Output {
+class _OutputService {
   outputInConsole(commissionData) {
     commissionData.forEach((commission) => {
       commission.error
@@ -8,4 +8,4 @@ class Output {
   }
 }
 
-export const OutputService = new Output();
+export const OutputService = new _OutputService();

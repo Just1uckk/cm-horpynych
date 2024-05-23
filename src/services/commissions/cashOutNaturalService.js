@@ -2,7 +2,7 @@ import { COMMISION_TYPE } from '../../constants/constants';
 import { ModelState } from '../../states/models/modelState';
 import { UserState } from '../../states/user/userState';
 import { CalculateCommissionService } from '../calculateCommissionService';
-import { UserService } from '../userService';
+import { UserWeeklyLimitService } from '../userWeeklyLimitService ';
 
 export class CashOutNaturalService {
   constructor(transfer) {
@@ -15,7 +15,7 @@ export class CashOutNaturalService {
     const user = UserState.getUser(this.transfer.user_id);
     const operationAmount = this.transfer.operation.amount;
 
-    const limit = new UserService(
+    const limit = new UserWeeklyLimitService(
       user,
       this.transfer.date,
       this.config.week_limit.amount,
