@@ -1,6 +1,6 @@
 import { BaseHttpServices } from '../services/baseHttpService';
 
-export class RequestsApiService {
+export class ApiService  {
   constructor(httpService) {
     this.http = httpService;
   }
@@ -24,4 +24,4 @@ export class RequestsApiService {
   };
 }
 
-export const RequestsApi = new RequestsApiService(new BaseHttpServices());
+export const Api = new ApiService(new BaseHttpServices());

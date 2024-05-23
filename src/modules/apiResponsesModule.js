@@ -1,4 +1,4 @@
-import { RequestsApi } from '../api/requests';
+import { Api  } from '../api/api';
 import { COMMISION_TYPE } from '../constants/constants';
 import { ModelState } from '../states/models/modelState';
 
@@ -11,12 +11,12 @@ export async function getComissionFeesModule() {
     };
 
     const commisionsData = await Promise.all([
-      RequestsApi.getCashIn(),
-      RequestsApi.getCashOutNatural(),
-      RequestsApi.getCashOutJuridical(),
+      Api.getCashIn(),
+      Api.getCashOutNatural(),
+      Api.getCashOutJuridical(),
     ]);
 
-    commisionsData.forEach((model, index) => ModelState.set(modelsName[index], model));
+    commisionsData.forEach((data, index) => ModelState.set(modelsName[index], data));
   } catch (e) {
     console.log('Something went wrong with getting models (ModelAction).');
   }
