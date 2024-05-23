@@ -14,24 +14,30 @@ export class CashOutNaturalService {
     const { getCommission } = CalculateCommissionService;
     const user = UserState.getUser(this.transfer.user_id);
     const operationAmount = this.transfer.operation.amount;
+
     const limit = new UserService(
       user,
       this.transfer.date,
       this.config.week_limit.amount,
     ).currentLimit();
-    const cash = operationAmount - limit;
+
+    const excessAmount  = operationAmount - limit;
     const freeLimit = limit - operationAmount;
+    const isOverLimit = operationAmount > limit;
+
     UserState.addUser(
       this.transfer.user_id,
       this.transfer.date,
-      operationAmount > limit ? 0 : freeLimit,
+      isOverLimit ? 0 : freeLimit,
     );
+
     const commissionInformation = {
-      cash: operationAmount > limit ? cash : freeLimit,
-      percent: operationAmount > limit ? this.config.percents : 0,
+      excessAmount : isOverLimit ? excessAmount  : freeLimit,
+      percent: isOverLimit ? this.config.percents : 0,
     };
+
     return getCommission(
-      commissionInformation.cash,
+      commissionInformation.excessAmount ,
       commissionInformation.percent,
     );
   }

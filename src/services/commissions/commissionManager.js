@@ -1,4 +1,4 @@
-import { OPERATION_TYPE } from '../../constants/constants';
+import { COMMISION_TYPE, OPERATION_TYPE } from '../../constants/constants';
 import { CashInNaturalService } from './cashInNaturalService';
 import { CashOutNaturalService } from './cashOutNaturalService';
 import { CashOutJuridicalService } from './cashOutJuridicalService';
@@ -7,10 +7,10 @@ export class CommissionManager {
   constructor(transfer) {
     this.transfer = transfer;
     this.strategies = {
-      cashInNatural: new CashInNaturalService(transfer),
-      cashInJuridical: new CashInNaturalService(transfer),
-      cashOutNatural: new CashOutNaturalService(transfer),
-      cashOutJuridical: new CashOutJuridicalService(transfer),
+      [COMMISION_TYPE.cashInNatural]: new CashInNaturalService(transfer),
+      [COMMISION_TYPE.cashInJuridical]: new CashInNaturalService(transfer),
+      [COMMISION_TYPE.cashOutNatural]: new CashOutNaturalService(transfer),
+      [COMMISION_TYPE.cashOutJuridical]: new CashOutJuridicalService(transfer),
     };
   }
 
