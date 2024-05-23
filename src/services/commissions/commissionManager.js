@@ -1,4 +1,4 @@
-import { SITUATION_METHODS } from '../../constants/constants';
+import { OPERATION_TYPE } from '../../constants/constants';
 import { CashInNaturalService } from './cashInNaturalService';
 import { CashOutNaturalService } from './cashOutNaturalService';
 import { CashOutJuridicalService } from './cashOutJuridicalService';
@@ -20,7 +20,7 @@ export class CommissionManager {
     }
     const situation =
       this.strategies[
-        SITUATION_METHODS[this.transfer.type][this.transfer.user_type]
+        OPERATION_TYPE[this.transfer.type][this.transfer.user_type]
       ];
     return { commission: situation.getCommission() };
   }

@@ -1,10 +1,10 @@
-import { SITUATION_MODEL } from '../../constants/constants';
+import { COMMISION_TYPE } from '../../constants/constants';
 import { ModelState } from '../../states/models/modelState';
 import { CalculateCommissionService } from '../calculateCommissionService';
 
 export class CashInNaturalService {
   constructor(transfer) {
-    this.config = ModelState.get(SITUATION_MODEL.cashInNatural);
+    this.config = ModelState.get(COMMISION_TYPE.cashInNatural);
     this.transfer = transfer;
   }
 
