@@ -1,23 +1,49 @@
-import { BaseHttpServices } from '../services/baseHttpService';
+import { BaseHttpServiceDto, BaseHttpServices } from '../services/baseHttpService';
+
+export interface getCashInDto {
+  percents: number,
+  max: {
+    amount: number,
+    currency: string,
+  }
+}
+
+export interface getCashOutNaturalDto {
+  percents: number,
+  week_limit: {
+    amount: number,
+    currency: string,
+  }
+}
+
+export interface getCashOutJuridicalDto {
+  percents: number,
+  min: {
+    amount: number,
+    currency: string,
+  }
+}
 
 export class ApiService  {
-  constructor(httpService) {
+  private http: BaseHttpServiceDto;
+
+  constructor(httpService: BaseHttpServiceDto) {
     this.http = httpService;
   }
 
-  getCashIn = async () => {
+  getCashIn = async (): Promise<getCashInDto> => {
     const payload = await this.http.get('/cash-in');
 
     return payload.data;
   };
 
-  getCashOutNatural = async () => {
+  getCashOutNatural = async (): Promise<getCashOutNaturalDto> => {
     const payload = await this.http.get('/cash-out-natural');
 
     return payload.data;
   };
 
-  getCashOutJuridical = async () => {
+  getCashOutJuridical = async (): Promise<getCashOutJuridicalDto> => {
     const payload = await this.http.get('/cash-out-juridical');
 
     return payload.data;
