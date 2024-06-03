@@ -2,9 +2,14 @@ import { COMMISION_TYPE, OPERATION_TYPE } from '../../constants/constants';
 import { CashInNaturalService } from './cashInNaturalService';
 import { CashOutNaturalService } from './cashOutNaturalService';
 import { CashOutJuridicalService } from './cashOutJuridicalService';
+import { inputDataDto } from '../../utils/parseJsonFile';
+import { commissionDto } from 'src/modules/calculateUserCommissionModule';
 
 export class CommissionManager {
-  constructor(transfer) {
+  private transfer: inputDataDto
+  private strategies: { [key: string]: any };
+
+  constructor(transfer: inputDataDto) {
     this.transfer = transfer;
     this.strategies = {
       [COMMISION_TYPE.cashInNatural]: new CashInNaturalService(transfer),
@@ -14,14 +19,13 @@ export class CommissionManager {
     };
   }
 
-  calculate() {
+  calculate(): commissionDto {
     if (this.transfer.operation.currency !== 'EUR') {
       return { error: 'Only supported currency is EUR' };
     }
-    const situation =
-      this.strategies[
-        OPERATION_TYPE[this.transfer.type][this.transfer.user_type]
-      ];
+    const operationType = OPERATION_TYPE[this.transfer.type];
+    const userType = operationType[this.transfer.user_type];
+    const situation = this.strategies[userType];
     return { commission: situation.getCommission() };
   }
 }

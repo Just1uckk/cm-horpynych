@@ -1,13 +1,17 @@
+import { getCashInDto, getCashOutJuridicalDto, getCashOutNaturalDto } from "../../api/api";
+
 class Model {
+  private models: { [key: string]: getCashInDto | getCashOutJuridicalDto | getCashOutNaturalDto };
+
   constructor() {
     this.models = {};
   }
 
-  set(type, data) {
+  set(type: string, data: getCashInDto | getCashOutJuridicalDto | getCashOutNaturalDto) {
     this.models[type] = data;
   }
 
-  get(type) {
+  get(type: string): getCashInDto | getCashOutJuridicalDto | getCashOutNaturalDto {
     return this.models[type];
   }
 }

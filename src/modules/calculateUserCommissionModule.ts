@@ -1,11 +1,16 @@
 import { CommissionManager } from '../services/commissions/commissionManager';
-import { OutputService } from '../services/outputService';
-import { parseJsonFile } from '../utils/parseJsonFile';
+import { inputDataDto, parseJsonFile } from '../utils/parseJsonFile';
+
+
+export interface commissionDto {
+  commission?: number;
+  error?: string;
+}
 
 export async function calculateUserCommissionModule() {
-  const path = process.argv[2];
-  const inputData = await parseJsonFile(path);
-  const commissionList = inputData.map((transferInformation) =>
+  const path: string = process.argv[2];
+  const inputData: inputDataDto[] = await parseJsonFile(path);
+  const commissionList: commissionDto[] = inputData.map((transferInformation) =>
     new CommissionManager(transferInformation).calculate(),
   );
   return commissionList

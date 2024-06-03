@@ -1,7 +1,7 @@
 import { getISOWeek } from 'date-fns';
 
 class _DateService {
-  getIsThisWeek(previousDate, currentDate) {
+  getIsThisWeek(previousDate: Date, currentDate: Date): boolean {
     const previous = new Date(previousDate);
     const current = new Date(currentDate);
     return getISOWeek(previous) === getISOWeek(current);

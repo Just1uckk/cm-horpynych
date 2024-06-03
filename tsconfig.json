@@ -1,11 +1,18 @@
 {
     "compilerOptions": {
+      "baseUrl": "./",
       "target": "ES6",
-      "module": "commonjs",
+      "module": "CommonJS",
       "outDir": "./dist",
       "rootDir": "./src",
       "strict": true,
-      "esModuleInterop": true
+      // "esModuleInterop": true,
+      "moduleResolution": "node",
+      "paths": {
+        "@babel/parser": ["./node_modules/@babel/parser"],
+        "@babel/types": ["./node_modules/@babel/types"],
+        "undici-types": ["./node_modules/undici/types"]
+      },
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules"]

@@ -1,14 +1,19 @@
+import { getCashOutJuridicalDto } from '../../api/api';
 import { COMMISION_TYPE } from '../../constants/constants';
 import { ModelState } from '../../states/models/modelState';
+import { inputDataDto } from '../../utils/parseJsonFile';
 import { CalculateCommissionService } from '../calculateCommissionService';
 
 export class CashOutJuridicalService {
-  constructor(transfer) {
-    this.config = ModelState.get(COMMISION_TYPE.cashOutJuridical);
+  private transfer: inputDataDto
+  private config: getCashOutJuridicalDto
+  
+  constructor(transfer: inputDataDto) {
+    this.config = ModelState.get(COMMISION_TYPE.cashOutJuridical) as getCashOutJuridicalDto;
     this.transfer = transfer;
   }
 
-  getCommission() {
+  getCommission(): number {
     const { getCommission } = CalculateCommissionService;
     const commission = getCommission(
       this.transfer.operation.amount,

@@ -1,9 +1,11 @@
+import { commissionDto } from "src/modules/calculateUserCommissionModule";
+
 class _OutputService {
-  outputInConsole(commissionData) {
-    commissionData.forEach((commission) => {
+  outputInConsole(commissionData: commissionDto[]): void {
+    commissionData.forEach((commission: commissionDto) => {
       commission.error
         ? console.log(commission.error)
-        : console.log(commission.commission.toFixed(2));
+        : console.log(commission?.commission?.toFixed(2));
     });
   }
 }

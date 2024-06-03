@@ -2,9 +2,9 @@ import { Api  } from '../api/api';
 import { COMMISION_TYPE } from '../constants/constants';
 import { ModelState } from '../states/models/modelState';
 
-export async function getComissionFeesModule() {
+export async function getComissionFeesModule(): Promise<void> {
   try {
-    const modelsName = {
+    const modelsName: { [key: number]: string } = {
       0: COMMISION_TYPE.cashInNatural,
       1: COMMISION_TYPE.cashOutNatural,
       2: COMMISION_TYPE.cashOutJuridical,

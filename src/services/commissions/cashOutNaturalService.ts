@@ -1,16 +1,21 @@
+import { getCashOutNaturalDto } from '../../api/api';
 import { COMMISION_TYPE } from '../../constants/constants';
 import { ModelState } from '../../states/models/modelState';
 import { UserState } from '../../states/user/userState';
+import { inputDataDto } from '../../utils/parseJsonFile';
 import { CalculateCommissionService } from '../calculateCommissionService';
 import { UserWeeklyLimitService } from '../userWeeklyLimitService ';
 
 export class CashOutNaturalService {
-  constructor(transfer) {
-    this.config = ModelState.get(COMMISION_TYPE.cashOutNatural);
+  private transfer: inputDataDto
+  private config: getCashOutNaturalDto
+
+  constructor(transfer: inputDataDto) {
+    this.config = ModelState.get(COMMISION_TYPE.cashOutNatural) as getCashOutNaturalDto;
     this.transfer = transfer;
   }
 
-  getCommission() {
+  getCommission(): number {
     const { getCommission } = CalculateCommissionService;
     const user = UserState.getUser(this.transfer.user_id);
     const operationAmount = this.transfer.operation.amount;
