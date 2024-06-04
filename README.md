@@ -23,7 +23,8 @@ Before you can use this application, you need to have Node.js installed on your 
 To use this application, please perform the following steps:
 
 1. Navigate to the root directory of the application in your terminal .
-2. Run `node lib/app input-data/input.json` to run the application and calculate commission fees for the provided input data.
+2. Add file with data to `input-data` folder with name `input.json`.
+2. Run `node lib/app input-data/input.json` to run the application and calculate commission fees for the provided input data. Or use `npm run start`.
 
 ### Testing
 

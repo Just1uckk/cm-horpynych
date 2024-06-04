@@ -7,8 +7,8 @@ import { CalculateCommissionService } from '../calculateCommissionService';
 import { UserWeeklyLimitService } from '../userWeeklyLimitService ';
 
 export class CashOutNaturalService {
-  private transfer: inputDataDto
-  private config: getCashOutNaturalDto
+  transfer: inputDataDto
+  config: getCashOutNaturalDto
 
   constructor(transfer: inputDataDto) {
     this.config = ModelState.get(COMMISION_TYPE.cashOutNatural) as getCashOutNaturalDto;

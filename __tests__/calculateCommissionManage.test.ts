@@ -1,6 +1,8 @@
 import { describe, expect, test, jest, beforeEach } from '@jest/globals';
 import { ModelState } from '../src/states/models/modelState';
 import { CommissionManager } from '../src/services/commissions/commissionManager';
+import { userDataDto } from '../src/states/user/userState';
+import { inputDataDto } from '../src/utils/parseJsonFile';
 
 const users = {
   get: jest.fn().mockReturnValue([
@@ -101,7 +103,7 @@ beforeEach(() => {
 });
 describe('Final functional test.', () => {
   test('Test.', () => {
-    const userList = users.get();
+    const userList: inputDataDto[] = users.get() as inputDataDto[];
     const commissionList = userList.map((user) =>
       new CommissionManager(user).calculate(),
     );

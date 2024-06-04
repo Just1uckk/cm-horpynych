@@ -1,5 +1,7 @@
 import { CashOutJuridicalService } from '../../../src/services/commissions/cashOutJuridicalService';
 import { jest, describe, expect, test } from '@jest/globals';
+import { inputDataDto } from '../../../src/utils/parseJsonFile';
+import { getCashOutJuridicalDto } from '../../../src/api/api';
 
 const configState = {
   get: jest.fn().mockReturnValue({
@@ -12,8 +14,8 @@ const configState = {
 };
 
 describe('CashOutJuridicalService', () => {
-  const userDataMin = {
-    date: '2016-01-06',
+  const userDataMin: inputDataDto = {
+    date: new Date('2016-01-06'),
     user_id: 2,
     user_type: 'juridical',
     type: 'cash_out',
@@ -22,8 +24,8 @@ describe('CashOutJuridicalService', () => {
       currency: 'EUR',
     },
   };
-  const userDataMax = {
-    date: '2016-01-06',
+  const userDataMax: inputDataDto = {
+    date: new Date('2016-01-06'),
     user_id: 2,
     user_type: 'juridical',
     type: 'cash_out',
@@ -36,14 +38,14 @@ describe('CashOutJuridicalService', () => {
   describe('getCommission()', () => {
     test('Returns the commission when it is greater than the minimum amount.', () => {
       const service = new CashOutJuridicalService(userDataMin);
-      service.config = configState.get('cashOutJuridical');
+      service.config = configState.get('cashOutJuridical') as getCashOutJuridicalDto;
       const commission = service.getCommission();
       expect(commission).toBe(0.9);
     });
 
     test('Returns the minimum amount when the commission is less than the minimum amount.', () => {
       const service = new CashOutJuridicalService(userDataMax);
-      service.config = configState.get('cashOutJuridical');
+      service.config = configState.get('cashOutJuridical') as getCashOutJuridicalDto;
       const commission = service.getCommission();
       expect(commission).toBe(0.5);
     });

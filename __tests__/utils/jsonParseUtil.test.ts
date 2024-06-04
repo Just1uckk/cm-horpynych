@@ -1,9 +1,10 @@
-import fs from 'fs';
+import * as fs from 'fs';
 import { parseJsonFile } from '../../src/utils/parseJsonFile';
 import { describe, expect, test } from '@jest/globals';
 
 describe('ReadJsonFile.', () => {
   test('Throws an exception if file is not provided.', async () => {
+    // @ts-ignore
     await expect(parseJsonFile()).rejects.toThrow('File path not found.');
   });
 

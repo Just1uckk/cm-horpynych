@@ -4,7 +4,7 @@ export interface userDataDto {
 }
 
 class User {
-  private users: Record<number, userDataDto>;
+  users: Record<number, userDataDto>;
 
   constructor() {
     this.users = {};

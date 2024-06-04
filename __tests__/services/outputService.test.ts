@@ -1,9 +1,10 @@
 import { describe, expect, test, jest } from '@jest/globals';
 import { OutputService } from '../../src/services/outputService';
+import { commissionDto } from '../../src/modules/calculateUserCommissionModule';
 
 describe('OutputService.', () => {
   test('Should log formatted commission data to the console.', () => {
-    const commissionData = [
+    const commissionData: commissionDto[] = [
       { commission: 1.23456 },
       { commission: 5.6789 },
       { commission: 0.123 },

@@ -5,8 +5,8 @@ import { inputDataDto } from '../../utils/parseJsonFile';
 import { CalculateCommissionService } from '../calculateCommissionService';
 
 export class CashOutJuridicalService {
-  private transfer: inputDataDto
-  private config: getCashOutJuridicalDto
+  transfer: inputDataDto
+  config: getCashOutJuridicalDto
   
   constructor(transfer: inputDataDto) {
     this.config = ModelState.get(COMMISION_TYPE.cashOutJuridical) as getCashOutJuridicalDto;

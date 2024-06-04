@@ -1,25 +1,26 @@
 import { CashOutNaturalService } from '../../../src/services/commissions/cashOutNaturalService';
 import { describe, expect, test, beforeEach } from '@jest/globals';
 import { ModelState } from '../../../src/states/models/modelState';
+import { inputDataDto } from '../../../src/utils/parseJsonFile';
 
 describe('CashOutNaturalService', () => {
-  const transfer = [
+  const transfer: inputDataDto[] = [
     {
-      date: '2016-01-06',
+      date: new Date('2016-01-06'),
       user_id: 1,
       user_type: 'natural',
       type: 'cash_out',
       operation: { amount: 30000, currency: 'EUR' },
     },
     {
-      date: '2016-01-07',
+      date: new Date('2016-01-07'),
       user_id: 1,
       user_type: 'natural',
       type: 'cash_out',
       operation: { amount: 1000.0, currency: 'EUR' },
     },
     {
-      date: '2016-01-07',
+      date: new Date('2016-01-07'),
       user_id: 1,
       user_type: 'natural',
       type: 'cash_out',

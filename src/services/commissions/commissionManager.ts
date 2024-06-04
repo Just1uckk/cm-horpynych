@@ -11,7 +11,7 @@ type StrategyClass =
   | typeof CashOutJuridicalService;
 
 export class CommissionManager {
-  private transfer: inputDataDto;
+  transfer: inputDataDto;
 
   constructor(transfer: inputDataDto) {
     this.transfer = transfer;

@@ -5,8 +5,8 @@ import { inputDataDto } from '../../utils/parseJsonFile';
 import { CalculateCommissionService } from '../calculateCommissionService';
 
 export class CashInNaturalService {
-  private transfer: inputDataDto
-  private config: getCashInDto
+  transfer: inputDataDto
+  config: getCashInDto
 
   constructor(transfer: inputDataDto) {
     this.config = ModelState.get(COMMISION_TYPE.cashInNatural) as getCashInDto;
